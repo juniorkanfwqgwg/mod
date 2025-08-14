@@ -151,6 +151,18 @@
       border: 0;
     }
 
+    /* Single Image Banner (Contestant) */
+    .single-image-banner a {
+      display: block;
+      line-height: 0; /* Prevents extra space below image */
+    }
+    .single-image-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
     /* Facebook Page Plugin Container */
     .fb-page-container {
       height: 900px;
@@ -219,6 +231,7 @@
 
       <!-- Navigation Links (for desktop) -->
       <div class="nav-links" id="nav-links" role="navigation">
+        <a href="#contestant">Contestant</a>
         <a href="#teaser">Teaser</a>
         <a href="#about">About</a>
         <a href="#gallery">Facebook</a>
@@ -251,6 +264,16 @@
   </header>
 
   <main>
+    <!-- ===================== CONTESTANT ===================== -->
+    <section id="contestant" aria-labelledby="contestant-title">
+      <h2 id="contestant-title">CONTESTANT</h2>
+      <div class="single-image-banner card">
+        <a href="#">
+          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FLogo%20Middle.png?alt=media&token=5f815e74-4a9d-4cd7-94d6-b0065795f429" alt="Contestant Information">
+        </a>
+      </div>
+    </section>
+
     <!-- ===================== TEASER ===================== -->
     <section id="teaser" aria-labelledby="teaser-title">
       <h2 id="teaser-title">TEASER</h2>
