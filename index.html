@@ -56,7 +56,6 @@
     .nav-links a:hover{background:#0f0f0f}
     .nav-links a.active{background:var(--card); border:1px solid var(--border);}
     
-    /* Mobile Menu Toggle Button (Hidden on Desktop) */
     .mobile-menu-toggle { display: none; }
 
     /* Header (16:9 banner) */
@@ -74,12 +73,18 @@
       z-index: 3;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 10px;
       justify-content: center;
       align-items: center;
       width: 90%;
       max-width: 550px;
       text-align: center;
+    }
+    .countdown__pre-label {
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 1px;
     }
     .countdown__boxes { 
       display: flex; 
@@ -108,17 +113,36 @@
     .card{background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow)}
 
     /* Section-specific styles */
-    #about .content{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    #about .content{display:grid; grid-template-columns: 1fr; gap:24px}
     #about p{margin:.4rem 0}
     #about ul{margin:.6rem 0 .6rem 1.25rem; padding-left: 0;}
     #about li{margin:.2rem 0}
-    #about .about-media{min-height:240px; background:#0f0f0f; border-radius:14px; border:1px solid var(--border); position:relative; overflow:hidden}
-    #about .about-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.9}
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+    .about-grid-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+    }
+    .about-grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .3s ease;
+    }
+    .about-grid-item:hover img {
+        transform: scale(1.05);
+    }
 
-    /* LIVE STREAM */
-    .live-embed{position:relative; width:100%; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:#000}
-    .live-embed::before{content:""; display:block; padding-top:56.25%} /* 16:9 Aspect Ratio */
-    .live-embed iframe {
+    /* Video Embed (Teaser) */
+    .video-embed{position:relative; width:100%; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:#000}
+    .video-embed::before{content:""; display:block; padding-top:56.25%} /* 16:9 Aspect Ratio */
+    .video-embed iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -140,25 +164,6 @@
       height: 900px !important;
     }
 
-
-    /* SPONSORS */
-    .sponsor-banner-container {
-      padding: 10px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-    .sponsor-banner-container a {
-      display: block;
-      line-height: 0; /* Prevents extra space below image */
-    }
-    .sponsor-banner-container img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
     footer{border-top:1px solid var(--border); padding:28px 20px; text-align:center; color:#bdbdbd; background:var(--bg-soft)}
 
     /* ==========================================================================
@@ -167,61 +172,19 @@
 
     /* Tablet & Large Phones */
     @media (max-width: 980px){
-      #about .content{grid-template-columns: 1fr}
+      .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* Mobile Navigation & Layout adjustments */
     @media (max-width: 768px){
-      
-      /* --- Mobile Menu --- */
-      .nav-logo-right { display: none; } /* Hide right logo on mobile */
       .nav-links {
         display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%; /* Position below nav bar */
-        left: 0;
-        width: 100%;
-        background: rgba(20, 20, 20, 0.98);
-        border-top: 1px solid var(--border);
-        padding: 10px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,.3);
       }
-      .mobile-menu-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 28px;
-        height: 28px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 100;
-      }
-      .mobile-menu-toggle .bar {
-        background: var(--text);
-        height: 3px;
-        width: 100%;
-        border-radius: 2px;
-        transition: all 0.3s ease-in-out;
-      }
-      .mobile-menu-toggle.is-open .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-      .mobile-menu-toggle.is-open .bar:nth-child(2) { opacity: 0; }
-      .mobile-menu-toggle.is-open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-      .nav-links.is-open { display: flex; }
-      .nav-links a {
-        padding: 14px 20px;
-        text-align: center;
-        border-radius: 0;
-        border: none;
-      }
-      .nav-links a:hover { background: var(--card); }
-      .nav-links a.active {
-        background: var(--accent);
-        color: var(--bg);
-        border: none;
+      .nav-logo-right img {
+        height: 52px; /* Adjust right logo size for mobile (40px * 1.3) */
+        margin: 0;
       }
     }
 
@@ -231,19 +194,15 @@
       section { padding: 30px 0; scroll-margin-top: 60px; }
       h2 { font-size: clamp(20px, 6vw, 26px); }
 
-      .countdown__boxes {
-        gap: 6px;
+      .countdown {
+        transform: translate(-50%, -50%) scale(0.7); /* Shrink the whole block */
       }
-      .cd-box {
-        padding: 5px;
+      .countdown__pre-label { 
+        font-size: 13px;
       }
-      .cd-box .num { font-size: clamp(16px, 4.5vw, 24px); }
-      .cd-box .txt { font-size: 10px; }
-    }
-
-    /* Very Small Screens */
-    @media (max-width: 480px) {
-      #about .card { padding: 15px; }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
   </style>
@@ -254,28 +213,20 @@
     <div class="nav-wrap">
       <!-- Left Logo: Links to top of the page -->
       <a href="#" class="nav-logo-left" aria-label="MOD CHALLENGE 2025 - Go to top">
-        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FMOD.png?alt=media&token=fe4fa6a8-1178-4517-aa33-0d0c30a107a2" alt="MOD CHALLENGE 2025 Logo">
+        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FMOD%20web%20logo.png?alt=media&token=3638f71e-9fba-4ca3-ae30-868e2a240b34" alt="MOD CHALLENGE 2025 Logo">
       </a>
 
       <!-- Navigation Links (for desktop) -->
       <div class="nav-links" id="nav-links" role="navigation">
+        <a href="#teaser">Teaser</a>
         <a href="#about">About</a>
-        <a href="#live">Live</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#sponsors">Sponsors</a>
+        <a href="#gallery">Facebook Page</a>
       </div>
       
       <!-- Right Logo: Links to an external site -->
-      <a href="https://www.dti.or.th/" target="_blank" rel="noopener noreferrer" class="nav-logo-right" aria-label="Defence Technology Institute">
-        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FKochasi_GOLD.png?alt=media&token=2b2e6ad9-ee6f-4672-8ddf-03a28c0ddbbb" alt="Kochasi Gold Logo">
+      <a href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" target="_blank" rel="noopener noreferrer" class="nav-logo-right" aria-label="Kochasi Weapon Plant Facebook Page">
+        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FKochasi_WHITE.png?alt=media&token=b51faff6-e401-4064-b4ba-9188a4fc2480" alt="Kochasi Gold Logo">
       </a>
-
-      <!-- Mobile Menu Button (Hamburger) -->
-      <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-      </button>
     </div>
   </nav>
 
@@ -287,6 +238,7 @@
 
       <!-- Countdown -->
       <div class="countdown" aria-label="Countdown to event">
+        <div class="countdown__pre-label">Live streaming is starting in</div>
         <div class="countdown__boxes">
           <div class="cd-box"><span class="num" id="cd-days">0</span><span class="txt">วัน</span></div>
           <div class="cd-box"><span class="num" id="cd-hours">0</span><span class="txt">ชั่วโมง</span></div>
@@ -298,11 +250,25 @@
   </header>
 
   <main>
+    <!-- ===================== TEASER ===================== -->
+    <section id="teaser" aria-labelledby="teaser-title">
+      <h2 id="teaser-title">TEASER</h2>
+      <div class="video-embed card">
+        <iframe 
+          src="https://www.youtube.com/embed/vUZHc3KRvdA" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
     <!-- ===================== ABOUT ===================== -->
     <section id="about" aria-labelledby="about-title">
       <h2 id="about-title">ABOUT THE EVENT</h2>
       <div class="content">
-        <div class="card" style="padding:18px 18px 6px">
+        <div class="card" style="padding:18px 18px 6px; margin-bottom: 24px;">
           <p>สำนักงานปลัดกระทรวงกลาโหม ร่วมกับ กองทัพไทย ได้จัดการทดสอบการใช้อาวุธทางยุทธวิธี <strong>MOD CHALLENGE 2025</strong> โดย ศูนย์อำนวยการสร้างอาวุธ ศูนย์การอุตสาหกรรมป้องกันประเทศและพลังงานทหาร ได้นำอาวุธที่ผลิตขึ้นในประเทศมาใช้ในการทดสอบครั้งนี้ ได้แก่:</p>
           <ul>
             <li>ปืนเล็กยาว <strong>MOD2020</strong> ขนาด 5.56x45mm.</li>
@@ -311,30 +277,18 @@
           </ul>
           <p>ใช้ร่วมกับกระสุนและดินส่งกระสุน ที่ผลิตขึ้นในประเทศ จากความร่วมมือระหว่างโรงงานวัตถุระเบิดทหาร และบริษัทเอกชนของไทย ชิงถ้วยรางวัลเกียรติยศ จาก พล.อ. ณัฐพล นาคพาณิขย์ รัฐมนตรีช่วยว่าการกระทรวงกลาโหม, พล.อ.สนิธชนก สังขจันทร์ ปลัดกระทรวงกลาโหม และ พล.อ. ทรงวิทย์ หนุนภักดี ผู้บัญชาการทหารสูงสุด</p>
         </div>
-        <div class="about-media">
-          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2F508821768_122197256042255891_4181182292287181114_n.jpg?alt=media&token=99314448-cdd0-4869-b62c-e1d6a559169b" alt="Event / tactical placeholder image"/>
+        <div class="about-grid">
+          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240288_0.jpg?alt=media&token=7daeeb94-45ba-434c-a605-0cec84b041a2" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240288_0.jpg?alt=media&token=7daeeb94-45ba-434c-a605-0cec84b041a2" alt="About Image 1"></a>
+          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240290_0.jpg?alt=media&token=88b3c840-a78a-442b-baa1-4ecde84dbe71" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240290_0.jpg?alt=media&token=88b3c840-a78a-442b-baa1-4ecde84dbe71" alt="About Image 2"></a>
+          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240291_0.jpg?alt=media&token=c6b5b25f-4618-4bef-b021-0f418db015d1" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240291_0.jpg?alt=media&token=c6b5b25f-4618-4bef-b021-0f418db015d1" alt="About Image 3"></a>
+          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240292_0.jpg?alt=media&token=0d89a510-d87c-4d5e-a909-738ce396b68f" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240292_0.jpg?alt=media&token=0d89a510-d87c-4d5e-a909-738ce396b68f" alt="About Image 4"></a>
         </div>
       </div>
     </section>
 
-    <!-- ===================== LIVE ===================== -->
-    <section id="live" aria-labelledby="live-title">
-      <h2 id="live-title">LIVE STREAM</h2>
-      <div class="live-embed card">
-        <iframe 
-          src="https://www.youtube.com/embed/XkDWXd6v8D4" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <p class="muted" style="margin-top:10px">วิดีโอตัวอย่างระหว่างรอการถ่ายทอดสด</p>
-    </section>
-
     <!-- ===================== GALLERY (Facebook Page feed) ===================== -->
     <section id="gallery" aria-labelledby="gallery-title">
-      <h2 id="gallery-title">GALLERY</h2>
+      <h2 id="gallery-title">FACEBOOK PAGE</h2>
       <div class="card" style="padding:12px">
         <div id="fb-root"></div>
         <!-- Wrapper Div to control size -->
@@ -356,15 +310,6 @@
       </div>
     </section>
 
-    <!-- ===================== SPONSORS ===================== -->
-    <section id="sponsors" aria-labelledby="sponsors-title">
-      <h2 id="sponsors-title">OUR SPONSORS</h2>
-      <div class="sponsor-banner-container">
-        <a href="https://www.example-sponsor-link.com" target="_blank" rel="noopener noreferrer" aria-label="Our Sponsors">
-          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FLogo%20Middle.png?alt=media&token=5f815e74-4a9d-4cd7-94d6-b0065795f429" alt="Sponsors Banner">
-        </a>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -412,19 +357,6 @@
       const timer = setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      // ===================== Mobile Menu Toggle =====================
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-          navLinks.classList.toggle('is-open');
-          menuToggle.classList.toggle('is-open');
-          const isOpen = navLinks.classList.contains('is-open');
-          menuToggle.setAttribute('aria-expanded', isOpen);
-        });
-      }
-
       // ===================== Sticky Nav Active Links =====================
       const links = Array.from(document.querySelectorAll('.nav-links a'));
       const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
@@ -445,17 +377,6 @@
 
         sections.forEach(sec => observer.observe(sec));
       }
-      
-      // Close mobile menu when a link is clicked
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-          if (navLinks && navLinks.classList.contains('is-open')) {
-            navLinks.classList.remove('is-open');
-            menuToggle.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
 
       // ===================== Footer Year =====================
       const yearEl = document.getElementById('year');
