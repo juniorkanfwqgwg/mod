@@ -7,18 +7,17 @@
   <meta name="description" content="MOD CHALLENGE 2025 — การทดสอบการใช้อาวุธทางยุทธวิธี โดยสำนักงานปลัดกระทรวงกลาโหมร่วมกับกองทัพไทย. Live, Gallery, Sponsors." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Google Font: Kanit (primary) + Roboto (fallback for numerals) -->
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#1a1a1a;           /* page background */
-      --bg-soft:#111;          /* softer sections */
-      --text:#f0f0f0;          /* primary text */
-      --muted:#c9c9c9;         /* secondary text */
-      --accent:#9acd32;        /* military green */
-      --accent-2:#d4af37;      /* gold (optional highlights) */
-      --card:#222;             /* card background */
-      --border:#2c2c2c;        /* subtle borders */
+      --bg: #1a1a1a;
+      --bg-soft: #111;
+      --text: #f0f0f0;
+      --muted: #c9c9c9;
+      --accent: #9acd32;
+      --accent-2: #d4af37;
+      --card: #222;
+      --border: #2c2c2c;
       --shadow: 0 10px 30px rgba(0,0,0,.4);
     }
     html{scroll-behavior:smooth}
@@ -26,30 +25,26 @@
       margin:0; background:var(--bg); color:var(--text);
       font-family:'Kanit', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
       line-height:1.6; letter-spacing:.2px;
-      -webkit-tap-highlight-color: transparent; /* Prevents flash on mobile tap */
+      -webkit-tap-highlight-color: transparent;
     }
     a{color:var(--accent); text-decoration:none}
     a:hover{opacity:.9}
 
-    /* ==========================================================================
-       Desktop First Styles (Base)
-       ========================================================================== */
-    
-    /* Sticky Nav */
+    /* --- Base Layout --- */
     nav.site-nav{position:sticky; top:0; z-index:50; background:rgba(15,15,15,.8); border-bottom:1px solid var(--border); backdrop-filter: blur(10px)}
     .nav-wrap{
       max-width:1100px; margin:0 auto; display:flex; align-items:center; 
       justify-content: space-between; gap:16px; padding:10px 20px;
     }
     .nav-logo-left, .nav-logo-right { display: flex; align-items: center; }
-    .nav-logo-left img { height: 40px; width: auto; object-fit: contain; } /* โลโก้ซ้าย */
+    .nav-logo-left img { height: 40px; width: auto; object-fit: contain; }
     .nav-logo-right img { 
-      height: 80px; /* ทำให้โลโก้ใหญ่ขึ้น */
+      height: 80px;
       width: auto; 
       object-fit: contain; 
-      margin-top: -20px; /* ใช้ margin ติดลบเพื่อดึงโลโก้ขึ้น */
-      margin-bottom: -20px; /* ใช้ margin ติดลบเพื่อดึงโลโก้ลง */
-    } /* โลโก้ขวา */
+      margin-top: -20px;
+      margin-bottom: -20px;
+    }
 
     .nav-links{display:flex; gap:14px; flex-wrap:wrap}
     .nav-links a{padding:8px 10px; border-radius:10px; color:var(--text); transition: background-color .2s, color .2s;}
@@ -58,16 +53,14 @@
     
     .mobile-menu-toggle { display: none; }
 
-    /* Header (16:9 banner) */
     header.hero{position:relative; width:100%; overflow:hidden; background:#000}
-    .hero__media{position:relative; width:100%; padding-top:56.25%; /* 16:9 ratio */}
+    .hero__media{position:relative; width:100%; padding-top:56.25%;}
     .hero__img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.1) brightness(.8)}
     .hero__overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,.25) 50%, rgba(0,0,0,.7) 90%)}
 
-    /* Countdown container */
     .countdown{
       position:absolute;
-      top: 68%;
+      top: 71%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 3;
@@ -79,12 +72,6 @@
       width: 90%;
       max-width: 550px;
       text-align: center;
-    }
-    .countdown__pre-label {
-      font-size: clamp(40px, 2.5vw, 40px);
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: 1px;
     }
     .countdown__boxes { 
       display: flex; 
@@ -107,12 +94,12 @@
     .cd-box .txt{display:block; font-size:12px; color:var(--muted)}
 
     main{max-width:1100px; margin:0 auto; padding:30px 20px 80px}
-    section{padding:40px 0; scroll-margin-top:80px} /* scroll-margin-top offsets the sticky nav height */
+    section{padding:40px 0; scroll-margin-top:80px}
     h2{font-size:clamp(22px, 3.2vw, 34px); margin:0 0 18px; font-weight:700; letter-spacing:.6px}
     .muted{color:var(--muted)}
     .card{background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow)}
 
-    /* Section-specific styles */
+    /* --- Page Sections --- */
     #about .content{display:grid; grid-template-columns: 1fr; gap:24px}
     #about p{margin:.4rem 0}
     #about ul{margin:.6rem 0 .6rem 1.25rem; padding-left: 0;}
@@ -126,7 +113,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 12px;
-        aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+        aspect-ratio: 4 / 3;
     }
     .about-grid-item img {
         width: 100%;
@@ -139,9 +126,8 @@
         transform: scale(1.05);
     }
 
-    /* Video Embed (Teaser) */
     .video-embed{position:relative; width:100%; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:#000}
-    .video-embed::before{content:""; display:block; padding-top:56.25%} /* 16:9 Aspect Ratio */
+    .video-embed::before{content:""; display:block; padding-top:56.25%}
     .video-embed iframe {
       position: absolute;
       top: 0;
@@ -151,10 +137,9 @@
       border: 0;
     }
 
-    /* Single Image Banner (Contestant) */
     .single-image-banner a {
       display: block;
-      line-height: 0; /* Prevents extra space below image */
+      line-height: 0;
     }
     .single-image-banner img {
       display: block;
@@ -163,13 +148,11 @@
       border-radius: 8px;
     }
 
-    /* Facebook Page Plugin Container */
     .fb-page-container {
       height: 900px;
       overflow: hidden;
       position: relative;
     }
-    /* Force iframe to fill container */
     .fb-page-container span,
     .fb-page-container iframe {
       width: 100% !important;
@@ -178,40 +161,30 @@
 
     footer{border-top:1px solid var(--border); padding:28px 20px; text-align:center; color:#bdbdbd; background:var(--bg-soft)}
 
-    /* ==========================================================================
-       Responsive Styles (Mobile First approach enhancements)
-       ========================================================================== */
-
-    /* Tablet & Large Phones */
+    /* --- Responsive --- */
     @media (max-width: 980px){
       .about-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* Mobile Navigation & Layout adjustments */
     @media (max-width: 768px){
       .nav-links {
         display: none;
       }
       .nav-logo-right img {
-        height: 52px; /* Adjust right logo size for mobile (40px * 1.3) */
+        height: 52px;
         margin: 0;
       }
     }
 
-    /* Small Mobile Phones */
     @media (max-width: 640px) {
       main { padding: 20px 15px 60px; }
       section { padding: 30px 0; scroll-margin-top: 60px; }
       h2 { font-size: clamp(20px, 6vw, 26px); }
 
       .countdown {
-        transform: translate(-50%, -50%) scale(0.6); /* Shrink the whole block further */
-      }
-      .countdown__pre-label { 
-        font-size: 16px; /* Make text larger relative to the shrunken container */
-        transform: scale(1.2); /* Enlarge text after shrinking container */
+        transform: translate(-50%, -50%) scale(0.6);
       }
       .about-grid {
         grid-template-columns: 1fr;
@@ -221,15 +194,13 @@
   </style>
 </head>
 <body>
-  <!-- ===================== NAVIGATION (Sticky) ===================== -->
+  <!-- Navigation -->
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-wrap">
-      <!-- Left Logo: Links to top of the page -->
       <a href="#" class="nav-logo-left" aria-label="MOD CHALLENGE 2025 - Go to top">
         <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FMOD%20web%20logo.png?alt=media&token=3638f71e-9fba-4ca3-ae30-868e2a240b34" alt="MOD CHALLENGE 2025 Logo">
       </a>
 
-      <!-- Navigation Links (for desktop) -->
       <div class="nav-links" id="nav-links" role="navigation">
         <a href="#contestant">Contestant</a>
         <a href="#teaser">Teaser</a>
@@ -237,22 +208,19 @@
         <a href="#gallery">Facebook</a>
       </div>
       
-      <!-- Right Logo: Links to an external site -->
       <a href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" target="_blank" rel="noopener noreferrer" class="nav-logo-right" aria-label="Kochasi Weapon Plant Facebook Page">
         <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FKochasi_WHITE.png?alt=media&token=b51faff6-e401-4064-b4ba-9188a4fc2480" alt="Kochasi Gold Logo">
       </a>
     </div>
   </nav>
 
-  <!-- ===================== HEADER / BANNER (16:9) ===================== -->
+  <!-- Hero Banner -->
   <header class="hero" aria-label="MOD CHALLENGE 2025 banner">
     <div class="hero__media">
-      <img class="hero__img" src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2F16.9-3.png?alt=media&token=62a6b769-2fb3-4b6e-8e08-2bc1a1b0dc11" alt="MOD Challenge 2025 Poster" />
+      <img class="hero__img" src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FBackdrop_RGB4_4Kweb%202.jpg?alt=media&token=2037e743-5b3d-4c93-8ba1-eed1ffcf2aac" alt="MOD Challenge 2025 Poster" />
       <div class="hero__overlay" aria-hidden="true"></div>
 
-      <!-- Countdown -->
       <div class="countdown" aria-label="Countdown to event">
-        <div class="countdown__pre-label">Live streaming is starting in</div>
         <div class="countdown__boxes">
           <div class="cd-box"><span class="num" id="cd-days">0</span><span class="txt">วัน</span></div>
           <div class="cd-box"><span class="num" id="cd-hours">0</span><span class="txt">ชั่วโมง</span></div>
@@ -264,17 +232,17 @@
   </header>
 
   <main>
-    <!-- ===================== CONTESTANT ===================== -->
+    <!-- Contestant -->
     <section id="contestant" aria-labelledby="contestant-title">
       <h2 id="contestant-title">CONTESTANT</h2>
-      <div class="single-image-banner card">
+      <div class="single-image-banner">
         <a href="#">
-          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FLogo%20Middle.png?alt=media&token=5f815e74-4a9d-4cd7-94d6-b0065795f429" alt="Contestant Information">
+          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FLogo%20Middle.png?alt=media&token=f2d11c80-424c-4113-8cf5-f1bf0b433c79" alt="Contestant Information">
         </a>
       </div>
     </section>
 
-    <!-- ===================== TEASER ===================== -->
+    <!-- Teaser -->
     <section id="teaser" aria-labelledby="teaser-title">
       <h2 id="teaser-title">TEASER</h2>
       <div class="video-embed card">
@@ -288,7 +256,7 @@
       </div>
     </section>
 
-    <!-- ===================== ABOUT ===================== -->
+    <!-- About -->
     <section id="about" aria-labelledby="about-title">
       <h2 id="about-title">ABOUT THE EVENT</h2>
       <div class="content">
@@ -311,14 +279,12 @@
       </div>
     </section>
 
-    <!-- ===================== GALLERY (Facebook Page feed) ===================== -->
+    <!-- Facebook -->
     <section id="gallery" aria-labelledby="gallery-title">
       <h2 id="gallery-title">FACEBOOK</h2>
       <div class="card" style="padding:12px">
         <div id="fb-root"></div>
-        <!-- Wrapper Div to control size -->
         <div class="fb-page-container">
-          <!-- Facebook Page Plugin: Using the correct public page URL -->
           <div class="fb-page" 
                data-href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" 
                data-tabs="timeline" 
@@ -337,18 +303,17 @@
 
   </main>
 
+  <!-- Footer -->
   <footer>
     © <span id="year"></span> MOD CHALLENGE 2025 • All rights reserved.
   </footer>
 
-  <!-- Facebook SDK (must be loaded once) -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="aBcDeFgH"></script>
 
   <script>
-    // Ensure scripts run after the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
 
-      // ===================== Countdown Logic =====================
+      // Countdown
       const target = new Date('2025-09-09T07:00:00+07:00').getTime();
       const cdDays = document.getElementById('cd-days');
       const cdHours = document.getElementById('cd-hours');
@@ -373,7 +338,6 @@
         if (cdSecs) cdSecs.textContent = String(secs).padStart(2,'0');
 
         if (target - now <= 0) {
-          // Hide countdown when it reaches zero
           const countdownContainer = document.querySelector('.countdown');
           if(countdownContainer) countdownContainer.style.display = 'none';
           clearInterval(timer);
@@ -382,7 +346,7 @@
       const timer = setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      // ===================== Sticky Nav Active Links =====================
+      // Nav Active Links
       const links = Array.from(document.querySelectorAll('.nav-links a'));
       const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
@@ -403,13 +367,12 @@
         sections.forEach(sec => observer.observe(sec));
       }
 
-      // ===================== Footer Year =====================
+      // Footer Year
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     });
 
-    // Force Facebook plugin to re-render after everything is loaded
-    // This fixes issues where the plugin renders too early with the wrong width
+    // Facebook SDK Render Fix
     window.onload = function() {
         if (typeof FB !== 'undefined') {
             FB.XFBML.parse();
