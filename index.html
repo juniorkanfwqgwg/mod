@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MOD CHALLENGE 2025 — Official Site</title>
+  <meta name="description" content="MOD CHALLENGE 2025 — การทดสอบการใช้อาวุธทางยุทธวิธี โดยสำนักงานปลัดกระทรวงกลาโหมร่วมกับกองทัพไทย. Live, Gallery, Sponsors." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Font: Kanit (primary) + Roboto (fallback for numerals) -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#1a1a1a;           /* page background */
+      --bg-soft:#111;          /* softer sections */
+      --text:#f0f0f0;          /* primary text */
+      --muted:#c9c9c9;         /* secondary text */
+      --accent:#9acd32;        /* military green */
+      --accent-2:#d4af37;      /* gold (optional highlights) */
+      --card:#222;             /* card background */
+      --border:#2c2c2c;        /* subtle borders */
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:'Kanit', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      line-height:1.6; letter-spacing:.2px;
+      -webkit-tap-highlight-color: transparent; /* Prevents flash on mobile tap */
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.9}
+
+    /* ==========================================================================
+       Desktop First Styles (Base)
+       ========================================================================== */
+    
+    /* Sticky Nav */
+    nav.site-nav{position:sticky; top:0; z-index:50; background:rgba(15,15,15,.8); border-bottom:1px solid var(--border); backdrop-filter: blur(10px)}
+    .nav-wrap{
+      max-width:1100px; margin:0 auto; display:flex; align-items:center; 
+      justify-content: space-between; gap:16px; padding:10px 20px;
+    }
+    .nav-logo-left, .nav-logo-right { display: flex; align-items: center; }
+    .nav-logo-left img { height: 40px; width: auto; object-fit: contain; } /* โลโก้ซ้าย */
+    .nav-logo-right img { 
+      height: 80px; /* ทำให้โลโก้ใหญ่ขึ้น */
+      width: auto; 
+      object-fit: contain; 
+      margin-top: -20px; /* ใช้ margin ติดลบเพื่อดึงโลโก้ขึ้น */
+      margin-bottom: -20px; /* ใช้ margin ติดลบเพื่อดึงโลโก้ลง */
+    } /* โลโก้ขวา */
+
+    .nav-links{display:flex; gap:14px; flex-wrap:wrap}
+    .nav-links a{padding:8px 10px; border-radius:10px; color:var(--text); transition: background-color .2s, color .2s;}
+    .nav-links a:hover{background:#0f0f0f}
+    .nav-links a.active{background:var(--card); border:1px solid var(--border);}
+    
+    /* Mobile Menu Toggle Button (Hidden on Desktop) */
+    .mobile-menu-toggle { display: none; }
+
+    /* Header (16:9 banner) */
+    header.hero{position:relative; width:100%; overflow:hidden; background:#000}
+    .hero__media{position:relative; width:100%; padding-top:56.25%; /* 16:9 ratio */}
+    .hero__img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.1) brightness(.8)}
+    .hero__overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,.25) 50%, rgba(0,0,0,.7) 90%)}
+
+    /* Countdown container */
+    .countdown{
+      position:absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      max-width: 550px;
+      text-align: center;
+    }
+    .countdown__boxes { 
+      display: flex; 
+      gap: 10px; 
+      justify-content: center;
+      width: 100%;
+    }
+    .cd-box{
+      min-width: 0;
+      flex: 1;
+      max-width: 100px;
+      text-align:center; 
+      background:rgba(17,17,17,.8); 
+      border:1px solid var(--border); 
+      border-radius:12px; 
+      padding:8px 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    }
+    .cd-box .num{display:block; font-family:'Roboto', 'Kanit', sans-serif; font-size:clamp(20px, 3vw, 34px); font-weight:700}
+    .cd-box .txt{display:block; font-size:12px; color:var(--muted)}
+
+    main{max-width:1100px; margin:0 auto; padding:30px 20px 80px}
+    section{padding:40px 0; scroll-margin-top:80px} /* scroll-margin-top offsets the sticky nav height */
+    h2{font-size:clamp(22px, 3.2vw, 34px); margin:0 0 18px; font-weight:700; letter-spacing:.6px}
+    .muted{color:var(--muted)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow)}
+
+    /* Section-specific styles */
+    #about .content{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    #about p{margin:.4rem 0}
+    #about ul{margin:.6rem 0 .6rem 1.25rem; padding-left: 0;}
+    #about li{margin:.2rem 0}
+    #about .about-media{min-height:240px; background:#0f0f0f; border-radius:14px; border:1px solid var(--border); position:relative; overflow:hidden}
+    #about .about-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.9}
+
+    /* LIVE STREAM */
+    .live-embed{position:relative; width:100%; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:#000}
+    .live-embed::before{content:""; display:block; padding-top:56.25%} /* 16:9 Aspect Ratio */
+    .live-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Facebook Page Plugin Container */
+    .fb-page-container {
+      height: 900px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Force iframe to fill container */
+    .fb-page-container span,
+    .fb-page-container iframe {
+      width: 100% !important;
+      height: 900px !important;
+    }
+
+
+    /* SPONSORS */
+    .sponsor-banner-container {
+      padding: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .sponsor-banner-container a {
+      display: block;
+      line-height: 0; /* Prevents extra space below image */
+    }
+    .sponsor-banner-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    footer{border-top:1px solid var(--border); padding:28px 20px; text-align:center; color:#bdbdbd; background:var(--bg-soft)}
+
+    /* ==========================================================================
+       Responsive Styles (Mobile First approach enhancements)
+       ========================================================================== */
+
+    /* Tablet & Large Phones */
+    @media (max-width: 980px){
+      #about .content{grid-template-columns: 1fr}
+    }
+
+    /* Mobile Navigation & Layout adjustments */
+    @media (max-width: 768px){
+      
+      /* --- Mobile Menu --- */
+      .nav-logo-right { display: none; } /* Hide right logo on mobile */
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below nav bar */
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.98);
+        border-top: 1px solid var(--border);
+        padding: 10px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,.3);
+      }
+      .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 28px;
+        height: 28px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 100;
+      }
+      .mobile-menu-toggle .bar {
+        background: var(--text);
+        height: 3px;
+        width: 100%;
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+      }
+      .mobile-menu-toggle.is-open .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .mobile-menu-toggle.is-open .bar:nth-child(2) { opacity: 0; }
+      .mobile-menu-toggle.is-open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+      .nav-links.is-open { display: flex; }
+      .nav-links a {
+        padding: 14px 20px;
+        text-align: center;
+        border-radius: 0;
+        border: none;
+      }
+      .nav-links a:hover { background: var(--card); }
+      .nav-links a.active {
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+      }
+    }
+
+    /* Small Mobile Phones */
+    @media (max-width: 640px) {
+      main { padding: 20px 15px 60px; }
+      section { padding: 30px 0; scroll-margin-top: 60px; }
+      h2 { font-size: clamp(20px, 6vw, 26px); }
+
+      .countdown__boxes {
+        gap: 6px;
+      }
+      .cd-box {
+        padding: 5px;
+      }
+      .cd-box .num { font-size: clamp(16px, 4.5vw, 24px); }
+      .cd-box .txt { font-size: 10px; }
+    }
+
+    /* Very Small Screens */
+    @media (max-width: 480px) {
+      #about .card { padding: 15px; }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- ===================== NAVIGATION (Sticky) ===================== -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-wrap">
+      <!-- Left Logo: Links to top of the page -->
+      <a href="#" class="nav-logo-left" aria-label="MOD CHALLENGE 2025 - Go to top">
+        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FMOD.png?alt=media&token=fe4fa6a8-1178-4517-aa33-0d0c30a107a2" alt="MOD CHALLENGE 2025 Logo">
+      </a>
+
+      <!-- Navigation Links (for desktop) -->
+      <div class="nav-links" id="nav-links" role="navigation">
+        <a href="#about">About</a>
+        <a href="#live">Live</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#sponsors">Sponsors</a>
+      </div>
+      
+      <!-- Right Logo: Links to an external site -->
+      <a href="https://www.dti.or.th/" target="_blank" rel="noopener noreferrer" class="nav-logo-right" aria-label="Defence Technology Institute">
+        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FKochasi_GOLD.png?alt=media&token=2b2e6ad9-ee6f-4672-8ddf-03a28c0ddbbb" alt="Kochasi Gold Logo">
+      </a>
+
+      <!-- Mobile Menu Button (Hamburger) -->
+      <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HEADER / BANNER (16:9) ===================== -->
+  <header class="hero" aria-label="MOD CHALLENGE 2025 banner">
+    <div class="hero__media">
+      <img class="hero__img" src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FPoster%2016.9.png?alt=media&token=bcad23c3-bfd7-4595-a3ac-9c6c4eac0cce" alt="MOD Challenge 2025 Poster" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <!-- Countdown -->
+      <div class="countdown" aria-label="Countdown to event">
+        <div class="countdown__boxes">
+          <div class="cd-box"><span class="num" id="cd-days">0</span><span class="txt">วัน</span></div>
+          <div class="cd-box"><span class="num" id="cd-hours">0</span><span class="txt">ชั่วโมง</span></div>
+          <div class="cd-box"><span class="num" id="cd-mins">0</span><span class="txt">นาที</span></div>
+          <div class="cd-box"><span class="num" id="cd-secs">0</span><span class="txt">วินาที</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">ABOUT THE EVENT</h2>
+      <div class="content">
+        <div class="card" style="padding:18px 18px 6px">
+          <p>สำนักงานปลัดกระทรวงกลาโหม ร่วมกับ กองทัพไทย ได้จัดการทดสอบการใช้อาวุธทางยุทธวิธี <strong>MOD CHALLENGE 2025</strong> โดย ศูนย์อำนวยการสร้างอาวุธ ศูนย์การอุตสาหกรรมป้องกันประเทศและพลังงานทหาร ได้นำอาวุธที่ผลิตขึ้นในประเทศมาใช้ในการทดสอบครั้งนี้ ได้แก่:</p>
+          <ul>
+            <li>ปืนเล็กยาว <strong>MOD2020</strong> ขนาด 5.56x45mm.</li>
+            <li>ปืนกลมือ <strong>NIN9</strong> ขนาด 9x19mm.</li>
+            <li>ปืนพกสั้น <strong>SAN9</strong> ขนาด 9x19mm.</li>
+          </ul>
+          <p>ใช้ร่วมกับกระสุนและดินส่งกระสุน ที่ผลิตขึ้นในประเทศ จากความร่วมมือระหว่างโรงงานวัตถุระเบิดทหาร และบริษัทเอกชนของไทย ชิงถ้วยรางวัลเกียรติยศ จาก พล.อ. ณัฐพล นาคพาณิขย์ รัฐมนตรีช่วยว่าการกระทรวงกลาโหม, พล.อ.สนิธชนก สังขจันทร์ ปลัดกระทรวงกลาโหม และ พล.อ. ทรงวิทย์ หนุนภักดี ผู้บัญชาการทหารสูงสุด</p>
+        </div>
+        <div class="about-media">
+          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2F508821768_122197256042255891_4181182292287181114_n.jpg?alt=media&token=99314448-cdd0-4869-b62c-e1d6a559169b" alt="Event / tactical placeholder image"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LIVE ===================== -->
+    <section id="live" aria-labelledby="live-title">
+      <h2 id="live-title">LIVE STREAM</h2>
+      <div class="live-embed card">
+        <iframe 
+          src="https://www.youtube.com/embed/XkDWXd6v8D4" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="muted" style="margin-top:10px">วิดีโอตัวอย่างระหว่างรอการถ่ายทอดสด</p>
+    </section>
+
+    <!-- ===================== GALLERY (Facebook Page feed) ===================== -->
+    <section id="gallery" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">GALLERY</h2>
+      <div class="card" style="padding:12px">
+        <div id="fb-root"></div>
+        <!-- Wrapper Div to control size -->
+        <div class="fb-page-container">
+          <!-- Facebook Page Plugin: Using the correct public page URL -->
+          <div class="fb-page" 
+               data-href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" 
+               data-tabs="timeline" 
+               data-width="1000" 
+               data-height="900" 
+               data-adapt-container-width="true" 
+               data-hide-cover="false" 
+               data-show-facepile="false">
+            <blockquote cite="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" class="fb-xfbml-parse-ignore">
+              <a href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/">Kochasi Weapon Plant</a>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SPONSORS ===================== -->
+    <section id="sponsors" aria-labelledby="sponsors-title">
+      <h2 id="sponsors-title">OUR SPONSORS</h2>
+      <div class="sponsor-banner-container">
+        <a href="https://www.example-sponsor-link.com" target="_blank" rel="noopener noreferrer" aria-label="Our Sponsors">
+          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FLogo%20Middle.png?alt=media&token=5f815e74-4a9d-4cd7-94d6-b0065795f429" alt="Sponsors Banner">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> MOD CHALLENGE 2025 • All rights reserved.
+  </footer>
+
+  <!-- Facebook SDK (must be loaded once) -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="aBcDeFgH"></script>
+
+  <script>
+    // Ensure scripts run after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ===================== Countdown Logic =====================
+      const target = new Date('2025-09-09T07:00:00+07:00').getTime();
+      const cdDays = document.getElementById('cd-days');
+      const cdHours = document.getElementById('cd-hours');
+      const cdMins = document.getElementById('cd-mins');
+      const cdSecs = document.getElementById('cd-secs');
+
+      function updateCountdown(){
+        const now = Date.now();
+        let diff = Math.max(0, target - now);
+
+        const days = Math.floor(diff / (1000*60*60*24));
+        diff -= days * (1000*60*60*24);
+        const hours = Math.floor(diff / (1000*60*60));
+        diff -= hours * (1000*60*60);
+        const mins = Math.floor(diff / (1000*60));
+        diff -= mins * (1000*60);
+        const secs = Math.floor(diff / 1000);
+
+        if (cdDays) cdDays.textContent = String(days);
+        if (cdHours) cdHours.textContent = String(hours).padStart(2,'0');
+        if (cdMins) cdMins.textContent = String(mins).padStart(2,'0');
+        if (cdSecs) cdSecs.textContent = String(secs).padStart(2,'0');
+
+        if (target - now <= 0) {
+          // Hide countdown when it reaches zero
+          const countdownContainer = document.querySelector('.countdown');
+          if(countdownContainer) countdownContainer.style.display = 'none';
+          clearInterval(timer);
+        }
+      }
+      const timer = setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // ===================== Mobile Menu Toggle =====================
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('is-open');
+          menuToggle.classList.toggle('is-open');
+          const isOpen = navLinks.classList.contains('is-open');
+          menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      // ===================== Sticky Nav Active Links =====================
+      const links = Array.from(document.querySelectorAll('.nav-links a'));
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+      if (sections.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const id = '#' + entry.target.id;
+            const activeLink = links.find(a => a.getAttribute('href') === id);
+            if (activeLink) {
+              if (entry.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                activeLink.classList.add('active');
+              }
+            }
+          });
+        }, {rootMargin: '-40% 0px -55% 0px', threshold: 0});
+
+        sections.forEach(sec => observer.observe(sec));
+      }
+      
+      // Close mobile menu when a link is clicked
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks && navLinks.classList.contains('is-open')) {
+            navLinks.classList.remove('is-open');
+            menuToggle.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // ===================== Footer Year =====================
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+
+    // Force Facebook plugin to re-render after everything is loaded
+    // This fixes issues where the plugin renders too early with the wrong width
+    window.onload = function() {
+        if (typeof FB !== 'undefined') {
+            FB.XFBML.parse();
+        }
+    };
+  </script>
+</body>
+</html>
