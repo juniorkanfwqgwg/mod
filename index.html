@@ -81,9 +81,9 @@
       text-align: center;
     }
     .countdown__pre-label {
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: 300;
-      color: var(--muted);
+      font-size: clamp(40px, 2.5vw, 40px);
+      font-weight: 400;
+      color: var(--text);
       letter-spacing: 1px;
     }
     .countdown__boxes { 
@@ -195,10 +195,11 @@
       h2 { font-size: clamp(20px, 6vw, 26px); }
 
       .countdown {
-        transform: translate(-50%, -50%) scale(0.7); /* Shrink the whole block */
+        transform: translate(-50%, -50%) scale(0.6); /* Shrink the whole block further */
       }
       .countdown__pre-label { 
-        font-size: 13px;
+        font-size: 16px; /* Make text larger relative to the shrunken container */
+        transform: scale(1.2); /* Enlarge text after shrinking container */
       }
       .about-grid {
         grid-template-columns: 1fr;
@@ -278,10 +279,10 @@
           <p>ใช้ร่วมกับกระสุนและดินส่งกระสุน ที่ผลิตขึ้นในประเทศ จากความร่วมมือระหว่างโรงงานวัตถุระเบิดทหาร และบริษัทเอกชนของไทย ชิงถ้วยรางวัลเกียรติยศ จาก พล.อ. ณัฐพล นาคพาณิขย์ รัฐมนตรีช่วยว่าการกระทรวงกลาโหม, พล.อ.สนิธชนก สังขจันทร์ ปลัดกระทรวงกลาโหม และ พล.อ. ทรงวิทย์ หนุนภักดี ผู้บัญชาการทหารสูงสุด</p>
         </div>
         <div class="about-grid">
-          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240288_0.jpg?alt=media&token=7daeeb94-45ba-434c-a605-0cec84b041a2" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240288_0.jpg?alt=media&token=7daeeb94-45ba-434c-a605-0cec84b041a2" alt="About Image 1"></a>
-          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240290_0.jpg?alt=media&token=88b3c840-a78a-442b-baa1-4ecde84dbe71" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240290_0.jpg?alt=media&token=88b3c840-a78a-442b-baa1-4ecde84dbe71" alt="About Image 2"></a>
-          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240291_0.jpg?alt=media&token=c6b5b25f-4618-4bef-b021-0f418db015d1" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240291_0.jpg?alt=media&token=c6b5b25f-4618-4bef-b021-0f418db015d1" alt="About Image 3"></a>
-          <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240292_0.jpg?alt=media&token=0d89a510-d87c-4d5e-a909-738ce396b68f" class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240292_0.jpg?alt=media&token=0d89a510-d87c-4d5e-a909-738ce396b68f" alt="About Image 4"></a>
+          <div class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240288_0.jpg?alt=media&token=7daeeb94-45ba-434c-a605-0cec84b041a2" alt="About Image 1"></div>
+          <div class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240290_0.jpg?alt=media&token=88b3c840-a78a-442b-baa1-4ecde84dbe71" alt="About Image 2"></div>
+          <div class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240291_0.jpg?alt=media&token=c6b5b25f-4618-4bef-b021-0f418db015d1" alt="About Image 3"></div>
+          <div class="about-grid-item"><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2FS__38240292_0.jpg?alt=media&token=0d89a510-d87c-4d5e-a909-738ce396b68f" alt="About Image 4"></div>
         </div>
       </div>
     </section>
