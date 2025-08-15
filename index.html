@@ -60,9 +60,9 @@
 
     .countdown{
       position:absolute;
-      top: 71%;
+      bottom: 25%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -176,6 +176,9 @@
       .about-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .countdown {
+        bottom: 15%;
+      }
     }
 
     @media (max-width: 768px){
@@ -186,6 +189,9 @@
         height: 52px;
         margin: 0;
       }
+      .countdown {
+        bottom: 20%;
+      }
     }
 
     @media (max-width: 640px) {
@@ -193,11 +199,9 @@
       section { padding: 12px 0; }
       h2 { font-size: clamp(20px, 6vw, 26px); }
 
-      .cd-box .num {
-        font-size: clamp(18px, 5vw, 22px);
-      }
-      .cd-box .txt {
-        font-size: 10px;
+      .countdown {
+        bottom: 7%;
+        transform: translateX(-50%) scale(0.52);
       }
       .about-grid {
         grid-template-columns: 1fr;
@@ -248,7 +252,7 @@
     <!-- Contestant -->
     <section id="contestant" aria-labelledby="contestant-title">
       <h2 id="contestant-title">CONTESTANT</h2>
-      <div class="single-image-banner">
+      <div class="single-image-banner card">
         <a href="#">
           <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-b9b9c.firebasestorage.app/o/uploads%2FMOD%2Fcontestant%202.png?alt=media&token=4b93abdf-8cdb-4052-a27b-4a0448c20153" alt="Contestant Information">
         </a>
@@ -274,7 +278,7 @@
       <h2 id="about-title">ABOUT THE EVENT</h2>
       <div class="content">
         <div class="card" style="padding:18px 18px 6px; margin-bottom: 24px;">
-          <p>สำนักงานปลัดกระทรวงกลาโหม ร่วมกับ กองทัพไทย ได้จัดการทดสอบการใช้อาวุธทางยุทธวิธี <strong>MOD CHALLENGE 2025</strong> โดย ศูนย์อำนวยการสร้างอาวุธ ศูนย์การอุตสาหกรรมป้องกันประเทศและพลังงานทหาร ได้นำอาวุธที่ผลิตขึ้นในประเทศมาใช้ในการทดสอบครั้งนี้ ได้แก่:</p>
+          <p>สำนักงานปลัดกระทรวงกลาโหม ร่วมกับ กองทัพไทย ได้จัดการทดสอบการใช้อาวุธทางยุทธวิธี <strong>MOD CHALLENGE ในวันที่ 9 กันยายน 2568 เวลา 08.30-17.00 น.</strong> โดย ศูนย์อำนวยการสร้างอาวุธ ศูนย์การอุตสาหกรรมป้องกันประเทศและพลังงานทหาร ได้นำอาวุธที่ผลิตขึ้นในประเทศมาใช้ในการทดสอบครั้งนี้ ได้แก่:</p>
           <ul>
             <li>ปืนเล็กยาว <strong>MOD2020</strong> ขนาด 5.56x45mm.</li>
             <li>ปืนกลมือ <strong>NIN9</strong> ขนาด 9x19mm.</li>
