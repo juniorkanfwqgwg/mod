@@ -60,7 +60,7 @@
 
     .countdown{
       position:absolute;
-      top: 71%;
+      top: 78%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 3;
@@ -87,14 +87,24 @@
       background:rgba(17,17,17,.8); 
       border:1px solid var(--border); 
       border-radius:12px; 
-      padding:8px 10px;
+      padding: 5px 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,.3);
     }
-    .cd-box .num{display:block; font-family:'Roboto', 'Kanit', sans-serif; font-size:clamp(20px, 3vw, 34px); font-weight:700}
-    .cd-box .txt{display:block; font-size:12px; color:var(--muted)}
+    .cd-box .num{
+        display:block; 
+        font-family:'Roboto', 'Kanit', sans-serif; 
+        font-size:clamp(28px, 4vw, 40px); 
+        font-weight:700;
+        line-height: 1.1;
+    }
+    .cd-box .txt{
+        display:block; 
+        font-size:clamp(12px, 1.5vw, 14px); 
+        color:var(--muted);
+    }
 
     main{max-width:1100px; margin:0 auto; padding:30px 20px 80px}
-    section{padding:40px 0; scroll-margin-top:80px}
+    section{padding:24px 0; scroll-margin-top:80px}
     h2{font-size:clamp(22px, 3.2vw, 34px); margin:0 0 18px; font-weight:700; letter-spacing:.6px}
     .muted{color:var(--muted)}
     .card{background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow)}
@@ -156,7 +166,7 @@
     .fb-page-container span,
     .fb-page-container iframe {
       width: 100% !important;
-      height: 900px !important;
+      height: 100% !important;
     }
 
     footer{border-top:1px solid var(--border); padding:28px 20px; text-align:center; color:#bdbdbd; background:var(--bg-soft)}
@@ -180,11 +190,14 @@
 
     @media (max-width: 640px) {
       main { padding: 20px 15px 60px; }
-      section { padding: 30px 0; scroll-margin-top: 60px; }
+      section { padding: 12px 0; }
       h2 { font-size: clamp(20px, 6vw, 26px); }
 
-      .countdown {
-        transform: translate(-50%, -50%) scale(0.6);
+      .cd-box .num {
+        font-size: clamp(18px, 5vw, 22px);
+      }
+      .cd-box .txt {
+        font-size: 10px;
       }
       .about-grid {
         grid-template-columns: 1fr;
@@ -288,8 +301,6 @@
           <div class="fb-page" 
                data-href="https://web.facebook.com/Kochasi-Weapon-Plant-100090020191133/" 
                data-tabs="timeline" 
-               data-width="1000" 
-               data-height="900" 
                data-adapt-container-width="true" 
                data-hide-cover="false" 
                data-show-facepile="false">
@@ -308,7 +319,18 @@
     © <span id="year"></span> MOD CHALLENGE 2025 • All rights reserved.
   </footer>
 
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="aBcDeFgH"></script>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: 'YOUR_APP_ID', // **สำคัญ:** ใส่ App ID ของคุณตรงนี้
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v18.0'
+      });
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -371,13 +393,6 @@
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     });
-
-    // Facebook SDK Render Fix
-    window.onload = function() {
-        if (typeof FB !== 'undefined') {
-            FB.XFBML.parse();
-        }
-    };
   </script>
 </body>
 </html>
